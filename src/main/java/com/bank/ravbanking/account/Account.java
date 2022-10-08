@@ -10,6 +10,7 @@ import java.util.List;
 @Table(name = "account")
 public class Account {
     @Id
+    @Column(name = "accountId")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long accountId;
     private String accountType;
@@ -20,14 +21,6 @@ public class Account {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "customerId")
     private Customer customer;
-
-//    @OneToOne(fetch = FetchType.EAGER)
-//    @JoinColumn(name = "accountId", referencedColumnName = "accountId")
-//    private Transaction transaction;
-
-//    @OneToOne(cascade = CascadeType.ALL)
-//    @JoinColumn(name = "transactionId", referencedColumnName = "transactionId")
-//    private Transaction transaction;
 
     public Account() {
     }

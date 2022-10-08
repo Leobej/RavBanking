@@ -10,21 +10,20 @@ import java.time.LocalDateTime;
 @Table(name = "transaction_method")
 public class Transaction {
     @Id
-//    @SequenceGenerator(name = "customer_sequence", sequenceName = "customer_sequence", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long transactionId;
     private String transactionType;
     private String amount;
     @OneToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "fromAccount",referencedColumnName = "accountId",insertable=false, updatable=false)
+    @JoinColumn(name = "fromAccount",referencedColumnName = "accountId")//, insertable=false, updatable=false
     private Account fromAccount;
     @OneToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "toAccount", referencedColumnName = "accountId", insertable=false, updatable=false)
+    @JoinColumn(name = "toAccount", referencedColumnName = "accountId")//
     private Account toAccount;
     private LocalDateTime issuedDate;
 
-    public Transaction(Long transactionId, String transactionType, String amount, Account fromAccount, Account toAccount, LocalDateTime issuedDate) {
-        this.transactionId = transactionId;
+    public Transaction(String transactionType, String amount, Account fromAccount, Account toAccount, LocalDateTime issuedDate) {
+
         this.transactionType = transactionType;
         this.amount = amount;
         this.fromAccount = fromAccount;

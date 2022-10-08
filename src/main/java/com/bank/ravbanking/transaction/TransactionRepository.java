@@ -9,6 +9,6 @@ import java.util.Optional;
 public interface TransactionRepository extends JpaRepository<Transaction, Long> {
 
     @Query("SELECT s FROM Transaction s WHERE s.transactionId = ?1")
-    Optional<Transaction> findTransactionBy(Long customerId);
+    Optional<Transaction> findTransactionBy(Long transactionId);
 }
 

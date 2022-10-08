@@ -21,9 +21,12 @@ public class TransactionService {
 
     public void addNewTransaction(Transaction transaction) {
         Optional<Transaction> transactionOptional = transactionRepository.findTransactionBy(transaction.getTransactionId());
+
         if (transactionOptional.isPresent()) {
             throw new IllegalStateException("id taken");
         }
+        transaction.getFromAccount().setAccountId(transaction.getFromAccount().getAccountId());
+        transaction.getToAccount().setAccountId(transaction.getToAccount().getAccountId());
         transactionRepository.save(transaction);
         System.out.println(transaction);
     }

@@ -1,9 +1,8 @@
 package com.bank.ravbanking.transaction;
 
 import com.bank.ravbanking.customer.Customer;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -20,4 +19,8 @@ public class TransactionController {
         return transactionService.getTransactions();
     }
 
+    @PostMapping
+    public void addNewTransaction(@RequestBody Transaction transaction) {
+        transactionService.addNewTransaction(transaction);
+    }
 }
