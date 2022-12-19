@@ -30,7 +30,6 @@ public class Transaction {
         this.toAccount = toAccount;
         this.issuedDate = issuedDate;
     }
-
     public Transaction() {
 
     }
